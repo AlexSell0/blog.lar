@@ -3,6 +3,12 @@
     Теги
 @endsection
 
+@section('breadcrumbs')
+    <li class="breadcrumb-item"><a href="{{ route('home') }}">Главная</a></li>
+    <li class="breadcrumb-item"><a href="{{ route('admin.main') }}">Админка</a></li>
+    <li class="breadcrumb-item active">Теги</li>
+@endsection
+
 @section('content')
     <div class="w-25 mb-3">
         <a href="{{ route('admin.tags.create') }}">

@@ -45,6 +45,13 @@
             </li>
         </ul>
 
+        <div class="ml-auto">
+            <form action="{{ route('logout') }}" method="POST">
+                @csrf
+                <input type="submit" value="Выйти" class="btn">
+            </form>
+        </div>
+
     </nav>
     <!-- /.navbar -->
 
@@ -68,9 +75,15 @@
                     <div class="col-sm-6">
                         <h1 class="m-0 d-flex align-items-center">@yield('header')</h1>
                     </div><!-- /.col -->
+                    <div class="col-sm-6">
+                        <ol class="breadcrumb float-sm-right">
+                            @yield('breadcrumbs')
+                        </ol>
+                    </div><!-- /.col -->
                 </div><!-- /.row -->
             </div><!-- /.container-fluid -->
         </div>
+
         <!-- /.content-header -->
 
         <!-- Main content -->

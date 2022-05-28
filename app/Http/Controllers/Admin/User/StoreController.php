@@ -4,8 +4,13 @@ namespace App\Http\Controllers\Admin\User;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Admin\User\StoreRequest;
+use App\Jobs\StoreUserJop;
+use App\Mail\User\PasswordMail;
 use App\Models\User;
+use Illuminate\Auth\Events\Registered;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Mail;
+use Illuminate\Support\Str;
 
 class StoreController extends Controller
 {
@@ -17,8 +22,8 @@ class StoreController extends Controller
             $data['role'] = 1;
         }
 
-        $data['password'] = Hash::make($data['password']);
-        User::firstOrCreate($data);
+        //Здесь отрабатывает класс очереди
+        StoreUserJop::dispatch($data);
 
         return redirect()->route('admin.user.store');
     }

@@ -26,7 +26,6 @@ class StoreRequest extends FormRequest
         return [
             'name' => 'required|string|max:255',
             'email' => 'required|string|email|max:255|unique:users',
-            'password' => 'required|string|min:6',
             'role' => 'required|integer'
         ];
     }
@@ -42,9 +41,6 @@ class StoreRequest extends FormRequest
             'email.email' => 'Неверный e-mail',
             'email.max' => 'Неверный e-mail',
             'email.unique' => 'Пользователь с данным e-mail уже существует',
-            'password.required' => 'Введите пароль',
-            'password.string' => 'Неверный пароль',
-            'password.min' => 'Пароль должен содержать не менее 6 знаков',
             'role.required' => 'Выберите роль пользователя',
             'role.integer' => 'Неверная роль',
         ];
