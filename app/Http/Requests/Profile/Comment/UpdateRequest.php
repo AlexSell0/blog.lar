@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Requests\Admin\Category;
+namespace App\Http\Requests\Profile\Comment;
 
 use Illuminate\Foundation\Http\FormRequest;
 
@@ -24,7 +24,15 @@ class UpdateRequest extends FormRequest
     public function rules()
     {
         return [
-            'title' => 'required|string'
+            'message' => 'required|string'
+        ];
+    }
+
+    public function messages()
+    {
+        return [
+            'message.required' => 'Введите комментарий',
+            'message.string' => "Это поле должно быть строкой",
         ];
     }
 }

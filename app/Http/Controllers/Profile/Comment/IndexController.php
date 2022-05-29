@@ -1,15 +1,18 @@
 <?php
 
-namespace App\Http\Controllers\Admin\Category;
+namespace App\Http\Controllers\Profile\Comment;
 
 use App\Http\Controllers\Controller;
-use App\Models\Category;
+use App\Models\Post;
 
 class IndexController extends Controller
 {
     public function __invoke()
     {
-        $data = Category::all();
-        return view('admin.categories.index', compact('data'));
+        $data = [];
+        $data['comments'] = auth()->user()->postComments;
+        $data['post'] = auth()->user()->postTitle;
+
+        return view('profile.comment.index', compact('data'));
     }
 }

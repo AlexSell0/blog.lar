@@ -15,9 +15,9 @@ class UpdateController extends BaseController
 
         $posts = $this->service->update($data, $posts);
 
-        $tags = Tag::all();
+        $tags = $posts->tags;
 
-        $categories = Category::find($posts['category_id']);
+        $categories = $posts->categories;
 
         if($categories !== null){
             $categories = $categories->title;

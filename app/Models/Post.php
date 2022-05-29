@@ -16,7 +16,7 @@ class Post extends Model
 
     public function categories()
     {
-        return $this->belongsTo(Tag::class, 'post_tags', 'post_id', 'tag_id');
+        return $this->belongsTo(Category::class, 'category_id', 'id');
     }
 
     public function tags()

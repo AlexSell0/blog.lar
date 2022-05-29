@@ -1,15 +1,14 @@
 <?php
 
-namespace App\Http\Controllers\Admin\Category;
+namespace App\Http\Controllers\Profile\Liked;
 
 use App\Http\Controllers\Controller;
-use App\Models\Category;
 
 class IndexController extends Controller
 {
     public function __invoke()
     {
-        $data = Category::all();
-        return view('admin.categories.index', compact('data'));
+        $data = auth()->user()->postLikes;
+        return view('profile.liked.index', compact('data'));
     }
 }

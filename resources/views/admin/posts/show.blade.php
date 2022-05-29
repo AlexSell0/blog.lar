@@ -29,17 +29,13 @@
                 </tr>
                 <tr>
                     <td class="col-3"><b>Категория</b></td>
-                    <td>{{ $categories }}</td>
+                    <td>{{ $posts->categories->title }}</td>
                 </tr>
                 <tr>
                     <td class="col-3"><b>Теги</b></td>
                     <td>
-                        @foreach($tags as $tag)
-                            @foreach($posts->tags as $postTag)
-                                @if($tag->id == $postTag->id)
+                        @foreach($posts->tags as $tag)
                             <span class="btn btn-primary">{{ $tag->title }}</span>
-                                @endif
-                            @endforeach
                         @endforeach
                     </td>
                 </tr>

@@ -1,19 +1,20 @@
 <?php
 
-namespace App\Http\Controllers\Admin\Category;
+namespace App\Http\Controllers\Profile\Comment;
 
 use App\Http\Controllers\Controller;
-use App\Http\Requests\Admin\Category\UpdateRequest;
-use App\Models\Category;
+use App\Http\Requests\Profile\Comment\UpdateRequest;
+use App\Models\Comment;
 
 class UpdateController extends Controller
 {
-    public function __invoke(UpdateRequest $request, Category $categories)
+    public function __invoke(UpdateRequest $request, Comment $comment)
     {
         $data = $request->validated();
-        $categories->update($data);
 
-        return view('admin.categories.show', compact('categories'));
+        $comment->update($data);
+
+        return redirect()->route('profile.comment.index');
 //        return redirect()->route('admin.categories.show', $categories);
     }
 }

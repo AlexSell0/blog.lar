@@ -67,3 +67,21 @@ Route::group(['namespace' => 'App\Http\Controllers\Admin', 'prefix' => 'admin', 
     });
 
 });
+
+Route::group(['namespace' => 'App\Http\Controllers\Profile', 'prefix' => 'profile', 'middleware' => ['auth', 'verified']], function () {
+    Route::group(['namespace' => 'Main'], function (){
+        Route::get('/', 'IndexController')->name('profile.main.index');
+    });
+
+    Route::group(['namespace' => 'Liked', 'prefix' => 'liked'], function (){
+        Route::get('/', 'IndexController')->name('profile.liked.index');
+        Route::delete('/{post}', 'DestroyController')->name('profile.liked.destroy');
+    });
+
+    Route::group(['namespace' => 'Comment', 'prefix' => 'comment'], function (){
+        Route::get('/', 'IndexController')->name('profile.comment.index');
+        Route::delete('/{post}', 'DestroyController')->name('profile.comment.destroy');
+        Route::get('/{comment}/edit', 'EditController')->name('profile.comment.edit');
+        Route::patch('/{comment}', 'UpdateController')->name('profile.comment.update');
+    });
+});

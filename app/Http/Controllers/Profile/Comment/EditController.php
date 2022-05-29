@@ -1,14 +1,15 @@
 <?php
 
-namespace App\Http\Controllers\Admin\Category;
+namespace App\Http\Controllers\Profile\Comment;
 
 use App\Http\Controllers\Controller;
 use App\Models\Category;
+use App\Models\Comment;
 
 class EditController extends Controller
 {
-    public function __invoke(Category $categories)
+    public function __invoke(Comment $comment)
     {
-        return view('admin.categories.edit', compact('categories'));
+        return view('profile.comment.edit', compact('comment'));
     }
 }
