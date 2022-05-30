@@ -17,9 +17,23 @@ Auth::routes(['verify' => true]);
 
 //Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
+Route::group(['namespace' => 'App\Http\Controllers\Post', 'prefix' => 'post'], function () {
+    Route::get('/', 'IndexController')->name('post.index');
+    Route::get('/{post}', 'ShowController')->name('post.show');
+
+    Route::group(['namespace' => 'Comment'], function () {
+        Route::post('/{post}/comment', 'StoreController')->name('post.comment.store');
+    });
+
+    Route::group(['namespace' => 'Like'], function () {
+        Route::post('/{post}/like', 'StoreController')->name('post.like.store');
+    });
+});
+
 Route::group(['namespace' => 'App\Http\Controllers\Main'], function () {
     Route::get('/', 'IndexController')->name('home');
 });
+
 
 Route::group(['namespace' => 'App\Http\Controllers\Admin', 'prefix' => 'admin', 'middleware' => ['auth', 'admin', 'verified']], function () {
     Route::group(['namespace' => 'Main'], function (){

@@ -9,6 +9,7 @@ class IndexController extends BaseController
     public function __invoke()
     {
         $data = Post::all();
+
         return view('admin.posts.index', compact('data'));
     }
 }

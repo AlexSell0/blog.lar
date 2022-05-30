@@ -23,4 +23,16 @@ class Post extends Model
     {
         return $this->belongsToMany(Tag::class, 'post_tags', 'post_id', 'tag_id');
     }
+
+    public function likesPosts(){
+        return $this->belongsToMany(Post::class, 'post_user_likes', 'post_id', 'user_id');
+    }
+
+    public  function commentsPost(){
+        return $this->hasMany(Comment::class, 'post_id', 'id');
+    }
+
+    public  function relatedPost(){
+        return $this->hasMany(Post::class, 'category_id', 'category_id')->where('id', '!=', 'id')->take(3);
+    }
 }

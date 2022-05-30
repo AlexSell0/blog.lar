@@ -9,6 +9,15 @@ class DestroyController extends Controller
 {
     public function __invoke(User $user)
     {
+//        $user->postComments;
+        foreach ($user->postComments as $comment){
+            $comment->delete();
+        }
+
+        foreach ($user->postLike as $like){
+            $like->delete();
+        }
+
         $user->delete();
 
         return redirect()->route('admin.user.index');
