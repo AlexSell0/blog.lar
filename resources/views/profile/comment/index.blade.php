@@ -29,7 +29,7 @@
                 @if(count($data['comments'])>0)
                     @for($i=0; $i<count($data['comments']); $i++)
                         <tr>
-                            <td>{{ $data['comments'][$i]->post_id }}</td>
+                            <td>{{ $data['comments'][$i]->id }}</td>
                             <td>{{ $data['post'][$i]->title }}</td>
                             <td>{{ $data['comments'][$i]->message }}</td>
                             <td><a class="text-success mr-3" href="{{ route('profile.comment.edit', $data['comments'][$i]->id) }}"><i class="fas fa-edit"></i></a></td>
