@@ -22,7 +22,7 @@
                                     <div class="d-flex">{{ $post->likesPosts->count() }}
                                         <form action="{{ route('post.like.store', $post->id) }}" method="post">
                                             @csrf
-                                            <button type="submit" class="bg-transparent border-0">
+                                            <button type="submit" class="bg-transparent border-0" style="outline: 0;>
                                                 <i
                                                     class="ml-1 fa{{ auth()->user()->postLikes->contains($post->id) === true? 's': 'r' }} fa-heart"></i>
                                             </button>
