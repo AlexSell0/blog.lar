@@ -33,11 +33,16 @@
                                     class="sr-only">(current)</span></a>
                         </li>
                         <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle" href="#" id="blogDropdown" data-toggle="dropdown"
-                                aria-haspopup="true" aria-expanded="false">Блог</a>
+                            <a class="nav-link" href="#">Блог</a>
+                        </li>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="{{ route('post.category.index') }}" id="blogDropdown" data-toggle="dropdown"
+                               aria-haspopup="true" aria-expanded="false">Категории</a>
                             <div class="dropdown-menu" aria-labelledby="blogDropdown">
-                                <a class="dropdown-item" href="blog.html">Blog Archive</a>
-                                <a class="dropdown-item" href="blog-single.html">Blog Post</a>
+                                @foreach($categories as $category)
+
+                                <a class="dropdown-item" href="{{ route('post.category.show', $category->id) }}">{{ $category->title }}</a>
+                                @endforeach
                             </div>
                         </li>
 

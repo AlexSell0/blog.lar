@@ -30,6 +30,12 @@ Route::group(['namespace' => 'App\Http\Controllers\Post', 'prefix' => 'post'], f
     });
 });
 
+Route::group(['namespace' => 'App\Http\Controllers\Post\Category', 'prefix' => 'category'], function () {
+    Route::get('/', 'indexController')->name('post.category.index');
+    Route::get('/{category}', 'ShowController')->name('post.category.show');
+});
+
+
 Route::group(['namespace' => 'App\Http\Controllers\Main'], function () {
     Route::get('/', 'IndexController')->name('home');
 });

@@ -5,11 +5,13 @@ namespace App\Http\Controllers\Post\Category;
 use App\Http\Controllers\Controller;
 use App\Models\Category;
 
-class IndexController extends Controller
+class ShowController extends Controller
 {
-    public function __invoke()
+    public function __invoke(Category $category)
     {
-        $data['categories'] = Category::all();
-        return view('post.category.index', compact('data'));
+        $data['posts'] = $category->posts()->paginate();
+        $data['category'] = $category;
+
+        return view('post.category.show', compact('data'));
     }
 }
