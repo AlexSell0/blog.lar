@@ -8,8 +8,9 @@ class IndexController extends Controller
 {
     public function __invoke()
     {
-        $data['likePostsCount'] = (auth()->user()->postLikes->count());
-        $data['PostComment'] = (auth()->user()->postComments->count());
+        $content = auth()->user();
+        $data['likePostsCount'] = $content->post_likes_count;
+        $data['PostComment'] = $content->post_comments_count;
 
         return view('profile.main.index', compact('data'));
     }

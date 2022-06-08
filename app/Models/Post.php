@@ -14,6 +14,9 @@ class Post extends Model
     protected $table = 'posts';
     protected $guarded = false;
 
+    protected $withCount = ['commentsPost', 'likesPosts'];
+    protected $with = ['categories', 'tags', 'commentsPost'];
+
     public function categories()
     {
         return $this->belongsTo(Category::class, 'category_id', 'id');
@@ -24,8 +27,12 @@ class Post extends Model
         return $this->belongsToMany(Tag::class, 'post_tags', 'post_id', 'tag_id');
     }
 
+//    public function likesPosts(){
+//        return $this->belongsToMany(Post::class, 'post_user_likes', 'post_id', 'user_id');
+//    }
+
     public function likesPosts(){
-        return $this->belongsToMany(Post::class, 'post_user_likes', 'post_id', 'user_id');
+        return $this->hasMany(PostUserLike::class, 'post_id', 'id');
     }
 
     public  function commentsPost(){

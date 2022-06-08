@@ -33,9 +33,6 @@
                                     class="sr-only">(current)</span></a>
                         </li>
                         <li class="nav-item dropdown">
-                            <a class="nav-link" href="#">Блог</a>
-                        </li>
-                        <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle" href="{{ route('post.category.index') }}" id="blogDropdown" data-toggle="dropdown"
                                aria-haspopup="true" aria-expanded="false">Категории</a>
                             <div class="dropdown-menu" aria-labelledby="blogDropdown">
@@ -55,9 +52,6 @@
                             </li>
                         @endguest
                         @auth()
-                            <li class="nav-item">
-                                <a class="nav-link" href="{{ route('profile.main.index') }}">Профиль</a>
-
                             <li class="nav-item">
                                 <a class="nav-link" href="{{ route('profile.main.index') }}">Профиль</a>
                             </li>

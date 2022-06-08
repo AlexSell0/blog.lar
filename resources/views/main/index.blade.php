@@ -15,16 +15,15 @@
                             <div class="blog-post-category d-flex justify-content-between">
                                 <span>{{ $post->categories->title }}</span>
                                 @guest()
-                                    <span>{{ $post->likesPosts->count() }}
+                                    <span>{{ $post->likes_posts_count}}
                                         <i class="ml-1 far fa-heart"></i></span>
                                 @endguest
                                 @auth()
-                                    <div class="d-flex">{{ $post->likesPosts->count() }}
+                                    <div class="d-flex">{{ $post->likes_posts_count }}
                                         <form action="{{ route('post.like.store', $post->id) }}" method="post">
                                             @csrf
                                             <button type="submit" class="bg-transparent border-0" style="outline: 0;>
-                                                <i
-                                                    class="ml-1 fa{{ auth()->user()->postLikes->contains($post->id) === true? 's': 'r' }} fa-heart"></i>
+                                                <i class="ml-1 fa{{ auth()->user()->postLikes->contains($post->id) === true? 's': 'r' }} fa-heart"></i>
                                             </button>
                                         </form>
                                     </div>

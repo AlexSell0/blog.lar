@@ -56,6 +56,9 @@ class User extends Authenticatable implements MustVerifyEmail
         'email_verified_at' => 'datetime',
     ];
 
+    protected $withCount = ['postComments', 'postLikes'];
+//    protected $with = ['postComments', 'postLikes'];
+
     public function sendEmailVerificationNotification()
     {
         $this->notify(new SendVerifyWithQueueNotification());
@@ -65,12 +68,6 @@ class User extends Authenticatable implements MustVerifyEmail
     {
         return $this->belongsToMany(Post::class, 'post_user_likes', 'user_id', 'post_id');
     }
-
-    public function postLike()
-    {
-        return $this->hasMany(PostUserLike::class, 'user_id', 'id');
-    }
-
 
     public function postComments()
     {

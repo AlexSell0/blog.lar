@@ -6,7 +6,7 @@
         <div class="container">
             <h1 class="edica-page-title" data-aos="fade-up">{{ $post->title }}</h1>
             <p class="edica-blog-post-meta" data-aos="fade-up" data-aos-delay="200">{{ $post['createDate'] }}
-                • {{ $post->categories->title }} • {{ $post->commentsPost->count() }} Комментария</p>
+                • {{ $post->categories->title }} • {{ $post->comments_post_count }} Комментария</p>
             <section class="blog-post-featured-img" data-aos="fade-up" data-aos-delay="300">
                 <img src="{{ url($post->main_image) }}" alt="featured image" class="w-100">
             </section>
@@ -17,11 +17,11 @@
             <div class="row">
                 <div class="col-12 pt-3 pb-3 mt-4 d-flex bg-light">Понравилось:&nbsp;
                     @guest()
-                        <span>{{ $post->likesPosts->count() }}
+                        <span>{{ $post->likes_posts_count }}
                                         <i class="ml-1 far fa-heart"></i></span>
                     @endguest
                     @auth()
-                        <div class="d-flex">{{ $post->likesPosts->count() }}
+                        <div class="d-flex">{{ $post->likes_posts_count }}
                             <form action="{{ route('post.like.store', $post->id) }}" method="post">
                                 @csrf
                                 <button type="submit" class="bg-transparent border-0" style="outline: 0;">
