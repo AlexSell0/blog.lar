@@ -1,5 +1,6 @@
 <?php
 
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -31,7 +32,7 @@ Route::group(['namespace' => 'App\Http\Controllers\Post', 'prefix' => 'post'], f
 });
 
 Route::group(['namespace' => 'App\Http\Controllers\Post\Category', 'prefix' => 'category'], function () {
-    Route::get('/', 'indexController')->name('post.category.index');
+    Route::get('/', 'IndexController')->name('post.category.index');
     Route::get('/{category}', 'ShowController')->name('post.category.show');
 });
 
@@ -92,8 +93,7 @@ Route::group(['namespace' => 'App\Http\Controllers\Profile', 'prefix' => 'profil
     Route::group(['namespace' => 'Main'], function (){
         Route::get('/', 'IndexController')->name('profile.main.index');
     });
-
-    Route::group(['namespace' => 'Liked', 'prefix' => 'liked'], function (){
+   Route::group(['namespace' => 'Liked', 'prefix' => 'liked'], function (){
         Route::get('/', 'IndexController')->name('profile.liked.index');
         Route::delete('/{post}', 'DestroyController')->name('profile.liked.destroy');
     });
